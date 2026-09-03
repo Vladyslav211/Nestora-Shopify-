@@ -1,0 +1,180 @@
+<section class="shop-hero">
+  <div class="container">
+    <p class="shop-hero__eyebrow">NESTORA COLLECTION</p>
+
+    <h1 class="shop-hero__title">
+      Thoughtful pieces<br>
+      for modern living.
+    </h1>
+
+    <p class="shop-hero__description">
+      Functional objects designed to make everyday spaces feel better.
+    </p>
+  </div>
+</section>
+
+<section class="shop">
+  <div class="container">
+
+    <div class="shop__toolbar">
+
+      <div class="shop__count">
+        <span id="products-count">
+          {{ collection.products_count }} products
+        </span>
+      </div>
+
+      <div class="shop__controls">
+
+        <select id="category-filter" class="shop__select">
+          <option value="all">All categories</option>
+          <option value="Lighting">Lighting</option>
+          <option value="Organization">Organization</option>
+          <option value="Smart Home">Smart Home</option>
+        </select>
+
+        <select id="sort-products" class="shop__select">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: Low to high</option>
+          <option value="price-high">Price: High to low</option>
+          <option value="rating">Highest rated</option>
+        </select>
+
+      </div>
+
+    </div>
+
+
+    <div
+      class="products__grid shop__products"
+      id="shop-products"
+    >
+
+      {% for product in collection.products %}
+
+        <article
+          class="product-card"
+          data-category="{{ product.type | escape }}"
+          data-price="{{ product.price }}"
+          data-rating="{{ product.metafields.reviews.rating.value | default: 0 }}"
+        >
+
+          <div class="product-card__image-wrapper">
+
+            <a href="{{ product.url }}">
+
+              <div class="product-card__image">
+
+                {% if product.tags contains 'Bestseller' %}
+
+                  <span class="product-card__badge">
+                    Bestseller
+                  </span>
+
+                {% elsif product.tags contains 'New' %}
+
+                  <span class="product-card__badge">
+                    New
+                  </span>
+
+                {% endif %}
+
+
+                {% if product.featured_image %}
+
+                  <img
+                    src="{{ product.featured_image | image_url: width: 1200 }}"
+                    alt="{{ product.title | escape }}"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                    loading="lazy"
+                  >
+
+                {% endif %}
+
+              </div>
+
+            </a>
+
+
+            <button
+              class="product-card__wishlist"
+              type="button"
+              data-wishlist="{{ product.id }}"
+              aria-label="Add {{ product.title | escape }} to wishlist"
+              aria-pressed="false"
+            >
+              ♡
+            </button>
+
+          </div>
+
+
+          <div class="product-card__content">
+
+            <span class="product-card__category">
+              {{ product.type }}
+            </span>
+
+            <a href="{{ product.url }}">
+
+              <h3 class="product-card__title">
+                {{ product.title }}
+              </h3>
+
+            </a>
+
+
+            <div class="product-card__rating">
+
+              <span class="product-card__stars">
+                ★★★★★
+              </span>
+
+              <span class="product-card__reviews">
+                ({{ product.metafields.reviews.rating_count.value | default: 0 }})
+              </span>
+
+            </div>
+
+
+            <div class="product-card__price">
+
+              <span class="product-card__current-price">
+                {{ product.price | money }}
+              </span>
+
+              {% if product.compare_at_price > product.price %}
+
+                <span class="product-card__old-price">
+                  {{ product.compare_at_price | money }}
+                </span>
+
+              {% endif %}
+
+            </div>
+
+          </div>
+
+        </article>
+
+      {% else %}
+
+        <p class="products-empty">
+          No products found.
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Shop",
+  "settings": []
+}
+{% endschema %}

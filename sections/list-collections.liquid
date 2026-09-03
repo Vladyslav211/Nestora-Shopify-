@@ -1,0 +1,160 @@
+<section class="collections">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <p class="section-heading__eyebrow">Explore</p>
+        <h1 class="section-heading__title">Shop by collection</h1>
+      </div>
+
+      <a
+        class="section-heading__link"
+        href="{{ routes.all_products_collection_url }}"
+      >
+        View all
+      </a>
+    </div>
+
+    <div class="collections__grid">
+
+      {% assign lighting = collections['lighting'] %}
+      {% if lighting %}
+        <a class="collection-card" href="{{ lighting.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'collection-lighting.jpeg' | asset_url }}"
+              alt="Lighting"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 01</p>
+            <h3>Lighting</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+
+      {% assign organization = collections['organization'] %}
+      {% if organization %}
+        <a class="collection-card" href="{{ organization.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'collection-organizer.jpeg' | asset_url }}"
+              alt="Organization"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 02</p>
+            <h3>Organization</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+
+      {% assign smart_home = collections['smart-home'] %}
+      {% if smart_home %}
+        <a class="collection-card" href="{{ smart_home.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'smart home.jpeg' | asset_url }}"
+              alt="Smart Home"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 03</p>
+            <h3>Smart Home</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+
+      {% assign bathroom = collections['bathroom'] %}
+      {% if bathroom %}
+        <a class="collection-card" href="{{ bathroom.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'bedroom collection.jpeg' | asset_url }}"
+              alt="Bathroom"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 04</p>
+            <h3>Bathroom</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+
+      {% assign kitchen = collections['kitchen'] %}
+      {% if kitchen %}
+        <a class="collection-card" href="{{ kitchen.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'kitchen collection.jpeg' | asset_url }}"
+              alt="Kitchen"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 05</p>
+            <h3>Kitchen</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+
+      {% assign home_decor = collections['home-decor'] %}
+      {% if home_decor %}
+        <a class="collection-card" href="{{ home_decor.url }}">
+          <div class="collection-card__image">
+            <img
+              src="{{ 'home decor collection.jpeg' | asset_url }}"
+              alt="Home Decor"
+              width="1200"
+              height="1200"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="collection-card__content">
+            <p class="collection-card__category">COLLECTION 06</p>
+            <h3>Home Decor</h3>
+            <span>Explore →</span>
+          </div>
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections",
+  "settings": []
+}
+{% endschema %}
