@@ -1,11 +1,11 @@
 {
   "sections": {
-    "home": {
-      "type": "home",
+    "account": {
+      "type": "account",
       "settings": {}
     }
   },
   "order": [
-    "home"
+    "account"
   ]
 }

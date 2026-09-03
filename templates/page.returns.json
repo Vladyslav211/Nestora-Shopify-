@@ -1,11 +1,11 @@
 {
   "sections": {
-    "home": {
-      "type": "home",
+    "returns": {
+      "type": "returns",
       "settings": {}
     }
   },
   "order": [
-    "home"
+    "returns"
   ]
 }

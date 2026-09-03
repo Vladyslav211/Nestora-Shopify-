@@ -1,47 +1,137 @@
-{% comment %}
-  This section is used in the collection template to render collection page
-  listing all products within a collection.
+<section class="collection-hero">
+  <div class="container">
 
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/collection
-{% endcomment %}
+    <p class="collection-hero__eyebrow">
+      COLLECTION
+    </p>
 
-<h1>{{ collection.title }}</h1>
+    <h1 class="collection-hero__title">
+      {{ collection.title }}
+    </h1>
 
-<div class="collection-products">
-  {% paginate collection.products by 20 %}
-    {% for product in collection.products %}
-      <div class="collection-product">
-        {% if product.featured_image %}
-          {% render 'image',
-            class: 'collection-product__image',
-            image: product.featured_image,
-            url: product.url,
-            width: 400,
-            height: 400,
-            crop: 'center'
-          %}
+    <p class="collection-hero__count">
+      {{ collection.products_count }} products
+    </p>
+
+  </div>
+</section>
+
+
+<section class="collection-products">
+
+  <div class="container">
+
+    <div class="products-grid" id="collectionProducts">
+
+      {% paginate collection.products by 20 %}
+
+        {% for product in collection.products %}
+
+          <article class="product-card">
+
+            <a
+              href="{{ product.url }}"
+              class="product-card__image-wrapper"
+            >
+
+              {% if product.featured_image %}
+
+                <img
+                  class="product-card__image"
+                  src="{{ product.featured_image | image_url: width: 800 }}"
+                  width="{{ product.featured_image.width }}"
+                  height="{{ product.featured_image.height }}"
+                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                  loading="lazy"
+                >
+
+              {% endif %}
+
+            </a>
+
+
+            <div class="product-card__content">
+
+              <h2 class="product-card__title">
+
+                <a href="{{ product.url }}">
+                  {{ product.title }}
+                </a>
+
+              </h2>
+
+
+              <p class="product-card__price">
+                {{ product.price | money }}
+              </p>
+
+            </div>
+
+          </article>
+
+        {% else %}
+
+          <p class="collection-products__empty">
+            No products found.
+          </p>
+
+        {% endfor %}
+
+
+        {% if paginate.pages > 1 %}
+
+          <nav
+            class="pagination"
+            aria-label="Pagination"
+          >
+
+            {% if paginate.previous %}
+
+              <a
+                class="pagination__link"
+                href="{{ paginate.previous.url }}"
+              >
+                Previous
+              </a>
+
+            {% endif %}
+
+
+            <span class="pagination__current">
+              Page {{ paginate.current_page }} of {{ paginate.pages }}
+            </span>
+
+
+            {% if paginate.next %}
+
+              <a
+                class="pagination__link"
+                href="{{ paginate.next.url }}"
+              >
+                Next
+              </a>
+
+            {% endif %}
+
+          </nav>
+
         {% endif %}
-        <div class="collection-product__content">
-          <p>{{ product.title | escape | link_to: product.url }}</p>
-          <p>{{ product.price | money }}</p>
-        </div>
-      </div>
-    {% endfor %}
 
-    {{ paginate | default_pagination }}
-  {% endpaginate %}
-</div>
+      {% endpaginate %}
 
-{% stylesheet %}
-  .collection-products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-{% endstylesheet %}
+    </div>
+
+  </div>
+
+</section>
+
 
 {% schema %}
 {
-  "name": "t:general.collection",
-  "settings": []
+  "name": "Collection",
+  "settings": [],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
 }
 {% endschema %}
