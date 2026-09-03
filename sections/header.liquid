@@ -1,0 +1,185 @@
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__container">
+
+    <!-- LOGO -->
+    <a class="logo" href="{{ routes.root_url }}">
+      NESTORA.
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav class="navigation">
+      <ul class="navigation__list">
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="{{ routes.all_products_collection_url }}">
+            Shop
+          </a>
+        </li>
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="{{ routes.collections_url }}">
+            Collections
+          </a>
+        </li>
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="/pages/about">
+            About
+          </a>
+        </li>
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="#">
+            Journal
+          </a>
+        </li>
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="{{ routes.account_url }}">
+            Account
+          </a>
+        </li>
+
+        <li class="navigation__item">
+          <a class="navigation__link" href="/pages/contact">
+            Contact
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- MOBILE MENU BUTTON -->
+    <button
+      class="btn-menu"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- HEADER ACTIONS -->
+    <div class="header__actions">
+
+      <!-- SEARCH -->
+      <button
+        class="header__action"
+        type="button"
+        aria-label="Search"
+      >
+        Search
+      </button>
+
+      <!-- WISHLIST -->
+      <a
+        class="header__action wishlist-link"
+        href="/pages/wishlist"
+        aria-label="Wishlist"
+      >
+        <svg
+          class="wishlist-link__icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78Z"
+          />
+        </svg>
+
+        <span
+          class="wishlist-link__count"
+          id="wishlist-count"
+        >
+          0
+        </span>
+      </a>
+
+      <!-- CART -->
+      <a
+        class="header__action cart-link"
+        href="{{ routes.cart_url }}"
+        aria-label="Shopping cart"
+      >
+        <svg
+          class="cart-link__icon"
+          aria-hidden="true"
+        >
+          <use href="{{ 'symbol-defs.svg' | asset_url }}#icon-shoping-cart"></use>
+        </svg>
+
+        <span
+          class="cart-link__count"
+          id="cart-count"
+        >
+          {{ cart.item_count }}
+        </span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<!-- SEARCH -->
+<div
+  class="search-overlay"
+  id="search-overlay"
+  aria-hidden="true"
+>
+  <div
+    class="search-overlay__backdrop"
+    data-search-close
+  ></div>
+
+  <div class="search-overlay__panel">
+
+    <div class="search-overlay__header">
+
+      <p class="search-overlay__eyebrow">
+        Search
+      </p>
+
+      <button
+        class="search-overlay__close"
+        type="button"
+        data-search-close
+        aria-label="Close search"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="search-overlay__input-wrapper">
+
+      <input
+        class="search-overlay__input"
+        id="search-input"
+        type="search"
+        placeholder="Search products..."
+        autocomplete="off"
+      />
+
+    </div>
+
+    <div
+      class="search-results"
+      id="search-results"
+    >
+      <p class="search-results__placeholder">
+        Start typing to search.
+      </p>
+    </div>
+
+  </div>
+</div>
+<!-- SEARCH / -->
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

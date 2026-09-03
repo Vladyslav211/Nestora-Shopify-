@@ -1,0 +1,122 @@
+<footer class="footer">
+  <div class="container">
+
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <a class="logo" href="{{ routes.root_url }}">
+          NESTORA.
+        </a>
+
+        <p>Thoughtful design for modern living.</p>
+      </div>
+
+      <div class="footer__column">
+        <h3>Shop</h3>
+
+        <a href="{{ routes.all_products_collection_url }}">
+          All products
+        </a>
+
+        <a href="{{ routes.all_products_collection_url }}">
+          Bestsellers
+        </a>
+
+        <a href="{{ routes.all_products_collection_url }}">
+          New arrivals
+        </a>
+
+        <a href="{{ routes.collections_url }}">
+          Collections
+        </a>
+      </div>
+
+      <div class="footer__column">
+        <h3>Customer care</h3>
+
+        <a href="/pages/shipping">
+          Shipping & delivery
+        </a>
+
+        <a href="/pages/returns">
+          Returns & refunds
+        </a>
+
+        <a href="/pages/faq">
+          FAQ
+        </a>
+
+        <a href="/pages/contact">
+          Contact
+        </a>
+      </div>
+
+      <div class="footer__column">
+        <h3>Company</h3>
+
+        <a href="/pages/about">
+          About us
+        </a>
+
+        <a href="/pages/about">
+          Our story
+        </a>
+
+        <a href="#">
+          Journal
+        </a>
+
+        <a href="#">
+          Sustainability
+        </a>
+      </div>
+
+      <div class="footer__newsletter">
+        <h3>Stay inspired</h3>
+
+        <p>
+          New arrivals, exclusive offers and home tips.
+        </p>
+
+        <form class="newsletter">
+          <input
+            type="email"
+            placeholder="Your email address"
+            required
+          />
+
+          <button type="submit">
+            →
+          </button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+
+      <p>
+        © {{ 'now' | date: '%Y' }} NESTORA. All rights reserved.
+      </p>
+
+      <div class="footer__legal">
+        <a href="/policies/privacy-policy">
+          Privacy Policy
+        </a>
+
+        <a href="/policies/terms-of-service">
+          Terms of Service
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

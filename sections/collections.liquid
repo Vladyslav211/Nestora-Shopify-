@@ -1,0 +1,176 @@
+<section class="collections">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <p class="section-heading__eyebrow">Explore</p>
+
+        <h2 class="section-heading__title">
+          Shop by collection
+        </h2>
+      </div>
+
+      <a
+        class="section-heading__link"
+        href="{{ routes.collections_url }}"
+      >
+        View all
+      </a>
+    </div>
+
+    <div class="collections__grid">
+
+      <!-- LIGHTING -->
+      <a
+        class="collection-card"
+        href="/collections/lighting"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'collection-lighting.jpeg' | asset_url }}"
+            alt="Lighting collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 01
+          </p>
+
+          <h3>Lighting</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+      <!-- ORGANIZATION -->
+      <a
+        class="collection-card"
+        href="/collections/organization"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'collection-organizer.jpeg' | asset_url }}"
+            alt="Organization collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 02
+          </p>
+
+          <h3>Organization</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+      <!-- SMART HOME -->
+      <a
+        class="collection-card"
+        href="/collections/smart-home"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'smart home.jpeg' | asset_url }}"
+            alt="Smart home collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 03
+          </p>
+
+          <h3>Smart Home</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+      <!-- BATHROOM -->
+      <a
+        class="collection-card"
+        href="/collections/bathroom"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'bedroom collection.jpeg' | asset_url }}"
+            alt="Bathroom collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 04
+          </p>
+
+          <h3>Bathroom</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+      <!-- KITCHEN -->
+      <a
+        class="collection-card"
+        href="/collections/kitchen"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'kitchen collection.jpeg' | asset_url }}"
+            alt="Kitchen collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 05
+          </p>
+
+          <h3>Kitchen</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+      <!-- HOME DECOR -->
+      <a
+        class="collection-card"
+        href="/collections/home-decor"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'home decor collection.jpeg' | asset_url }}"
+            alt="Home decor collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 06
+          </p>
+
+          <h3>Home Decor</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections",
+  "settings": []
+}
+{% endschema %}

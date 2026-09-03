@@ -1,0 +1,36 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "benefits": {
+      "type": "benefits",
+      "settings": {}
+    },
+    "collections": {
+      "type": "collections",
+      "settings": {}
+    },
+    "featured-products": {
+      "type": "featured-products",
+      "settings": {}
+    },
+    "lifestyle": {
+      "type": "lifestyle",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "hero",
+    "benefits",
+    "collections",
+    "featured-products",
+    "lifestyle",
+    "reviews"
+  ]
+}
