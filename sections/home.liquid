@@ -1,0 +1,513 @@
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__container">
+    <div class="hero__content">
+      <p class="hero__eyebrow">Smart home. Beautiful life.</p>
+
+      <h1 class="hero__title">
+        Thoughtful design
+        <br>
+        for modern living.
+      </h1>
+
+      <p class="hero__description">
+        Functional home essentials that bring beauty, comfort, and
+        simplicity to every space.
+      </p>
+
+      <div class="hero__actions">
+        <a
+          class="button button--primary"
+          href="{{ routes.all_products_collection_url }}"
+        >
+          Shop bestsellers
+        </a>
+
+        <a
+          class="button button--secondary"
+          href="{{ routes.collections_url }}"
+        >
+          Explore collections
+        </a>
+      </div>
+
+      <div class="hero__social-proof">
+        <div class="hero__avatars">
+          <!-- avatars later -->
+        </div>
+
+        <div class="hero__rating">
+          <div class="hero__stars">★★★★★</div>
+          <p>20,000+ happy customers</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__image">
+      <img
+        src="{{ 'hero.modern.jpeg' | asset_url }}"
+        alt="Modern living room with warm ambient lighting"
+        loading="eager"
+      >
+    </div>
+  </div>
+</section>
+
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <div class="container">
+    <ul class="benefits__list">
+      <li class="benefits__item">
+        <strong>Free shipping</strong>
+        <span>On orders over $50</span>
+      </li>
+
+      <li class="benefits__item">
+        <strong>30-day returns</strong>
+        <span>Hassle-free returns</span>
+      </li>
+
+      <li class="benefits__item">
+        <strong>Secure payments</strong>
+        <span>100% secure checkout</span>
+      </li>
+
+      <li class="benefits__item">
+        <strong>24/7 support</strong>
+        <span>We're here to help</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+<!-- COLLECTIONS -->
+<section class="collections">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <p class="section-heading__eyebrow">Explore</p>
+
+        <h2 class="section-heading__title">
+          Shop by collection
+        </h2>
+      </div>
+
+      <a
+        class="section-heading__link"
+        href="{{ routes.collections_url }}"
+      >
+        View all
+      </a>
+    </div>
+
+    <div class="collections__grid">
+
+      <!-- LIGHTING -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/lighting"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'collection-lighting.jpeg' | asset_url }}"
+            alt="Lighting collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 01
+          </p>
+
+          <h3>Lighting</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+
+      <!-- ORGANIZATION -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/organization"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'collection-organizer.jpeg' | asset_url }}"
+            alt="Organization collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 02
+          </p>
+
+          <h3>Organization</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+
+      <!-- SMART HOME -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/smart-home"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'smart home.jpeg' | asset_url }}"
+            alt="Smart home collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 03
+          </p>
+
+          <h3>Smart Home</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+
+      <!-- BATHROOM -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/bathroom"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'bedroom collection.jpeg' | asset_url }}"
+            alt="Bathroom collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 04
+          </p>
+
+          <h3>Bathroom</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+
+      <!-- KITCHEN -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/kitchen"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'kitchen collection.jpeg' | asset_url }}"
+            alt="Kitchen collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 05
+          </p>
+
+          <h3>Kitchen</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+
+      <!-- HOME DECOR -->
+      <a
+        class="collection-card"
+        href="{{ routes.collections_url }}/home-decor"
+      >
+        <div class="collection-card__image">
+          <img
+            src="{{ 'home decor collection.jpeg' | asset_url }}"
+            alt="Home decor collection"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="collection-card__content">
+          <p class="collection-card__category">
+            COLLECTION 06
+          </p>
+
+          <h3>Home Decor</h3>
+
+          <span>Explore →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- BEST SELLERS -->
+<section class="products">
+  <div class="container">
+
+    <div class="section-heading">
+      <div>
+        <p class="section-heading__eyebrow">
+          Curated for you
+        </p>
+
+        <h2 class="section-heading__title">
+          Best sellers
+        </h2>
+      </div>
+
+      <a href="{{ routes.all_products_collection_url }}">
+        View all
+      </a>
+    </div>
+
+
+    <div class="products__grid">
+
+      {% for product in collections.all.products limit: 4 %}
+
+        <article class="product-card">
+
+          <div class="product-card__image-wrapper">
+
+            <a href="{{ product.url }}">
+
+              <div class="product-card__image">
+
+                {% if product.tags contains 'Bestseller' %}
+                  <span class="product-card__badge">
+                    Bestseller
+                  </span>
+                {% elsif product.tags contains 'New' %}
+                  <span class="product-card__badge">
+                    New
+                  </span>
+                {% endif %}
+
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 800 }}"
+                    alt="{{ product.featured_image.alt | escape | default: product.title | escape }}"
+                    loading="lazy"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                  >
+                {% endif %}
+
+              </div>
+
+            </a>
+
+
+            <button
+              class="product-card__wishlist"
+              type="button"
+              data-wishlist="{{ product.id }}"
+              aria-label="Add {{ product.title | escape }} to wishlist"
+              aria-pressed="false"
+            >
+              ♡
+            </button>
+
+          </div>
+
+
+          <div class="product-card__content">
+
+            <span class="product-card__category">
+              {{ product.type }}
+            </span>
+
+            <a href="{{ product.url }}">
+              <h3 class="product-card__title">
+                {{ product.title }}
+              </h3>
+            </a>
+
+
+            <div class="product-card__rating">
+              <span class="product-card__stars">
+                ★★★★★
+              </span>
+            </div>
+
+
+            <div class="product-card__price">
+
+              <span class="product-card__current-price">
+                {{ product.price | money }}
+              </span>
+
+              {% if product.compare_at_price > product.price %}
+                <span class="product-card__old-price">
+                  {{ product.compare_at_price | money }}
+                </span>
+              {% endif %}
+
+            </div>
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LIFESTYLE -->
+<section class="lifestyle">
+  <div class="container lifestyle__container">
+
+    <div class="lifestyle__content">
+
+      <p class="lifestyle__eyebrow">
+        Better spaces. Better days.
+      </p>
+
+      <h2 class="lifestyle__title">
+        Small changes.
+        <br>
+        Big impact.
+      </h2>
+
+      <p class="lifestyle__description">
+        Thoughtfully selected pieces designed to bring comfort,
+        beauty, and function into your everyday life.
+      </p>
+
+      <a
+        class="button button--primary"
+        href="/pages/about"
+      >
+        Our story
+      </a>
+
+    </div>
+
+
+    <div class="lifestyle__image">
+
+      <img
+        src="{{ 'lifestyle.interior.jpeg' | asset_url }}"
+        alt="Elegant modern home interior"
+        loading="lazy"
+      >
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div>
+        <p class="section-heading__eyebrow">
+          Customer stories
+        </p>
+
+        <h2 class="section-heading__title">
+          Loved by thousands.
+        </h2>
+      </div>
+
+      <a href="#">
+        Read all reviews
+      </a>
+
+    </div>
+
+
+    <div class="reviews__grid">
+
+      <article class="review">
+
+        <div class="review__rating">
+          ★★★★★
+        </div>
+
+        <p class="review__text">
+          "Beautiful products and surprisingly fast shipping.
+          Everything feels much more premium in person."
+        </p>
+
+        <span class="review__author">
+          Sarah M. — Chicago, IL
+        </span>
+
+      </article>
+
+
+      <article class="review">
+
+        <div class="review__rating">
+          ★★★★★
+        </div>
+
+        <p class="review__text">
+          "Finally found a store with products that actually
+          make my apartment better."
+        </p>
+
+        <span class="review__author">
+          Daniel R. — Austin, TX
+        </span>
+
+      </article>
+
+
+      <article class="review">
+
+        <div class="review__rating">
+          ★★★★★
+        </div>
+
+        <p class="review__text">
+          "The quality, packaging and design are excellent.
+          Definitely ordering again."
+        </p>
+
+        <span class="review__author">
+          Jessica T. — New York, NY
+        </span>
+
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Nestora Home",
+  "settings": []
+}
+{% endschema %}

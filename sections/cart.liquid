@@ -1,17 +1,12 @@
 <section class="cart-page">
-
   <div class="container">
 
     <div class="cart-page__header">
-
-      <p class="cart-page__eyebrow">
-        Your selection
-      </p>
+      <p class="cart-page__eyebrow">Your selection</p>
 
       <h1 class="cart-page__title">
         Shopping cart
       </h1>
-
     </div>
 
 
@@ -21,98 +16,85 @@
 
         <!-- CART ITEMS -->
 
-        <div class="cart-items" id="cart-items">
+        <div class="cart-items">
 
           {% for item in cart.items %}
 
             <article class="cart-item">
 
               <div class="cart-item__image">
+                <a href="{{ item.url }}">
 
-                {% if item.image %}
-
-                  <a href="{{ item.url }}">
-
+                  {% if item.image %}
                     <img
-                      src="{{ item.image | image_url: width: 400 }}"
+                      src="{{ item.image | image_url: width: 500 }}"
+                      alt="{{ item.image.alt | escape | default: item.product.title | escape }}"
                       width="{{ item.image.width }}"
                       height="{{ item.image.height }}"
-                      alt="{{ item.image.alt | default: item.product.title | escape }}"
                       loading="lazy"
                     >
+                  {% endif %}
 
-                  </a>
-
-                {% endif %}
-
+                </a>
               </div>
 
 
               <div class="cart-item__content">
 
-                <h2 class="cart-item__title">
+                <div class="cart-item__info">
 
                   <a href="{{ item.url }}">
-                    {{ item.product.title }}
+                    <h2 class="cart-item__title">
+                      {{ item.product.title }}
+                    </h2>
                   </a>
 
-                </h2>
+                  {% unless item.product.has_only_default_variant %}
+                    <p class="cart-item__variant">
+                      {{ item.variant.title }}
+                    </p>
+                  {% endunless %}
 
-
-                {% unless item.product.has_only_default_variant %}
-
-                  <p class="cart-item__variant">
-                    {{ item.variant.title }}
+                  <p class="cart-item__price">
+                    {{ item.final_price | money }}
                   </p>
-
-                {% endunless %}
-
-
-                <p class="cart-item__price">
-                  {{ item.final_price | money }}
-                </p>
-
-
-                <div class="cart-item__quantity">
-
-                  <a
-                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
-                    class="quantity__button"
-                    aria-label="Decrease quantity"
-                  >
-                    −
-                  </a>
-
-
-                  <span>
-                    {{ item.quantity }}
-                  </span>
-
-
-                  <a
-                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
-                    class="quantity__button"
-                    aria-label="Increase quantity"
-                  >
-                    +
-                  </a>
 
                 </div>
 
 
-                <a
-                  href="{{ item.url_to_remove }}"
-                  class="cart-item__remove"
-                >
-                  Remove
-                </a>
+                <div class="cart-item__actions">
 
-              </div>
+                  <div class="cart-item__quantity">
+
+                    <a
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
+                      aria-label="Decrease quantity"
+                    >
+                      −
+                    </a>
+
+                    <span>
+                      {{ item.quantity }}
+                    </span>
+
+                    <a
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </a>
+
+                  </div>
 
 
-              <div class="cart-item__total">
+                  <a
+                    class="cart-item__remove"
+                    href="{{ item.url_to_remove }}"
+                  >
+                    Remove
+                  </a>
 
-                {{ item.final_line_price | money }}
+                </div>
 
               </div>
 
@@ -138,7 +120,7 @@
               Subtotal
             </span>
 
-            <span id="cart-subtotal">
+            <span>
               {{ cart.total_price | money }}
             </span>
 
@@ -167,17 +149,14 @@
               Total
             </span>
 
-            <span id="cart-total">
+            <span>
               {{ cart.total_price | money }}
             </span>
 
           </div>
 
 
-          <form
-            action="{{ routes.cart_url }}"
-            method="post"
-          >
+          {% form 'cart', cart %}
 
             <button
               class="button button--primary cart-summary__checkout"
@@ -187,7 +166,7 @@
               Proceed to checkout
             </button>
 
-          </form>
+          {% endform %}
 
 
           <p class="cart-summary__note">
@@ -198,17 +177,28 @@
 
       </div>
 
+
     {% else %}
+
+      <!-- EMPTY CART -->
 
       <div class="cart-empty">
 
-        <p class="cart-empty__text">
-          Your cart is currently empty.
+        <p class="cart-page__eyebrow">
+          Your selection
+        </p>
+
+        <h2>
+          Your cart is empty.
+        </h2>
+
+        <p>
+          Discover something for your space.
         </p>
 
         <a
-          href="{{ routes.all_products_collection_url }}"
           class="button button--primary"
+          href="{{ routes.all_products_collection_url }}"
         >
           Continue shopping
         </a>
@@ -218,16 +208,12 @@
     {% endif %}
 
   </div>
-
 </section>
 
 
 {% schema %}
 {
   "name": "Cart",
-  "settings": [],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  }
+  "settings": []
 }
 {% endschema %}

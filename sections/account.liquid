@@ -1,0 +1,516 @@
+{% if customer %}
+
+<section class="account">
+  <div class="container">
+
+    <!-- ACCOUNT HEADER -->
+    <div class="account__header">
+      <div>
+        <p class="account__eyebrow">My account</p>
+
+        <h1 class="account__title">
+          Welcome back, {{ customer.first_name | default: customer.name }}.
+        </h1>
+      </div>
+
+      <a
+        class="account__logout"
+        href="{{ routes.account_logout_url }}"
+      >
+        Log out
+      </a>
+    </div>
+
+
+    <!-- POINTS -->
+    <div class="account__points">
+
+      <div class="account__points-main">
+        <p class="account__card-label">
+          Your points
+        </p>
+
+        <p class="account__points-value">
+          0
+        </p>
+
+        <p class="account__points-value-label">
+          points
+        </p>
+      </div>
+
+
+      <div class="account__points-reward">
+        <p class="account__card-label">
+          Reward value
+        </p>
+
+        <p class="account__reward-value">
+          $0.00
+        </p>
+
+        <a
+          class="account__reward-link"
+          href="#rewards"
+        >
+          View rewards →
+        </a>
+      </div>
+
+    </div>
+
+
+    <!-- ACCOUNT GRID -->
+    <div class="account__grid">
+
+
+      <!-- PROFILE -->
+      <section class="account-card account-card--profile">
+
+        <div class="account-card__header">
+          <div>
+            <p class="account-card__eyebrow">
+              Profile
+            </p>
+
+            <h2>
+              Personal information
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="account-profile">
+
+          <div class="account-profile__item">
+            <span>Name</span>
+
+            <strong>
+              {{ customer.name }}
+            </strong>
+          </div>
+
+
+          <div class="account-profile__item">
+            <span>Email</span>
+
+            <strong>
+              {{ customer.email }}
+            </strong>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ORDERS -->
+      <section class="account-card">
+
+        <div class="account-card__header">
+
+          <div>
+            <p class="account-card__eyebrow">
+              Orders
+            </p>
+
+            <h2>
+              Order history
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="order-history">
+
+          {% if customer.orders.size > 0 %}
+
+            {% for order in customer.orders limit: 5 %}
+
+              <div class="order-history__item">
+
+                <div>
+                  <strong>
+                    {{ order.name }}
+                  </strong>
+
+                  <span>
+                    {{ order.created_at | date: "%B %d, %Y" }}
+                  </span>
+                </div>
+
+
+                <div>
+                  <strong>
+                    {{ order.total_price | money }}
+                  </strong>
+
+                  <span>
+                    {{ order.financial_status_label }}
+                  </span>
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+          {% else %}
+
+            <p>
+              You haven't placed any orders yet.
+            </p>
+
+            <a
+              class="account-card__link"
+              href="{{ routes.all_products_collection_url }}"
+            >
+              Start shopping →
+            </a>
+
+          {% endif %}
+
+        </div>
+
+      </section>
+
+
+      <!-- REWARDS -->
+      <section
+        class="account-card account-card--full"
+        id="rewards"
+      >
+
+        <div class="account-card__header">
+
+          <div>
+            <p class="account-card__eyebrow">
+              Rewards
+            </p>
+
+            <h2>
+              Redeem your points
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="rewards-grid">
+
+          <button
+            class="reward-card"
+            type="button"
+            data-reward="1000"
+            disabled
+          >
+            <span class="reward-card__value">
+              $10
+            </span>
+
+            <strong>
+              $10 off
+            </strong>
+
+            <span>
+              1,000 points
+            </span>
+          </button>
+
+
+          <button
+            class="reward-card"
+            type="button"
+            data-reward="2500"
+            disabled
+          >
+            <span class="reward-card__value">
+              $25
+            </span>
+
+            <strong>
+              $25 off
+            </strong>
+
+            <span>
+              2,500 points
+            </span>
+          </button>
+
+
+          <button
+            class="reward-card"
+            type="button"
+            data-reward="5000"
+            disabled
+          >
+            <span class="reward-card__value">
+              $50
+            </span>
+
+            <strong>
+              $50 off
+            </strong>
+
+            <span>
+              5,000 points
+            </span>
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- EARN POINTS -->
+      <section class="account-card">
+
+        <div class="account-card__header">
+
+          <div>
+            <p class="account-card__eyebrow">
+              Earn
+            </p>
+
+            <h2>
+              Earn more points
+            </h2>
+          </div>
+
+        </div>
+
+
+        <div class="earn-list">
+
+          <div class="earn-item">
+            <div>
+              <strong>
+                Create an account
+              </strong>
+
+              <span>
+                Complete your profile
+              </span>
+            </div>
+
+            <b>
+              +500
+            </b>
+          </div>
+
+
+          <div class="earn-item">
+            <div>
+              <strong>
+                Make your first order
+              </strong>
+
+              <span>
+                One-time reward
+              </span>
+            </div>
+
+            <b>
+              +1,000
+            </b>
+          </div>
+
+
+          <div class="earn-item">
+            <div>
+              <strong>
+                Write a review
+              </strong>
+
+              <span>
+                Share your experience
+              </span>
+            </div>
+
+            <b>
+              +200
+            </b>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- REFERRAL -->
+      <section class="account-card">
+
+        <div class="account-card__header">
+
+          <div>
+            <p class="account-card__eyebrow">
+              Refer & earn
+            </p>
+
+            <h2>
+              Invite a friend
+            </h2>
+          </div>
+
+        </div>
+
+
+        <p class="referral__description">
+          Give your friend $10 off their first order and receive
+          1,000 points when they make a purchase.
+        </p>
+
+
+        <div class="referral__link">
+
+          <span>
+            {{ shop.url }}?ref={{ customer.id }}
+          </span>
+
+          <button
+            type="button"
+            onclick="navigator.clipboard.writeText('{{ shop.url }}?ref={{ customer.id }}')"
+          >
+            Copy
+          </button>
+
+        </div>
+
+
+        <p class="referral__copied" hidden>
+          Referral link copied.
+        </p>
+
+      </section>
+
+
+      <!-- POINT HISTORY -->
+      <section class="account-card account-card--full">
+
+        <div class="account-card__header">
+
+          <div>
+            <p class="account-card__eyebrow">
+              Activity
+            </p>
+
+            <h2>
+              Points history
+            </h2>
+
+          </div>
+
+        </div>
+
+
+        <div class="points-history">
+
+          <p>
+            Your points activity will appear here.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% else %}
+
+<!-- LOGIN -->
+<section class="account">
+  <div class="container">
+
+    <div class="account__header">
+      <div>
+        <p class="account__eyebrow">
+          My account
+        </p>
+
+        <h1 class="account__title">
+          Welcome back.
+        </h1>
+      </div>
+    </div>
+
+
+    {% form 'customer_login' %}
+
+      <div class="auth">
+
+        {% if form.errors %}
+          <div class="form-errors">
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+
+        <label class="auth__field">
+          <span>
+            Email
+          </span>
+
+          <input
+            type="email"
+            name="customer[email]"
+            autocomplete="email"
+            required
+          >
+        </label>
+
+
+        <label class="auth__field">
+          <span>
+            Password
+          </span>
+
+          <input
+            type="password"
+            name="customer[password]"
+            autocomplete="current-password"
+            required
+          >
+        </label>
+
+
+        <button
+          type="submit"
+          class="button button--primary"
+        >
+          Log in
+        </button>
+
+
+        <a
+          href="{{ routes.account_register_url }}"
+        >
+          Create account
+        </a>
+
+
+        <a
+          href="{{ routes.account_login_url }}#recover"
+        >
+          Forgot password?
+        </a>
+
+      </div>
+
+    {% endform %}
+
+  </div>
+</section>
+
+{% endif %}
+
+
+{% schema %}
+{
+  "name": "Account",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,158 @@
+<!-- HERO -->
+<section class="about-hero">
+  <div class="container">
+    <p class="about-hero__eyebrow">Our philosophy</p>
+
+    <h1 class="about-hero__title">
+      Better spaces. Better everyday life.
+    </h1>
+
+    <p class="about-hero__description">
+      NESTORA. is a considered collection of functional objects for modern
+      living — selected for the way they make a space feel, not simply the
+      way they look.
+    </p>
+  </div>
+</section>
+
+
+<!-- IMAGE -->
+<section class="about-image">
+  <div class="container">
+    <div class="about-image__wrapper">
+      <img
+        src="{{ 'warm living room.jpeg' | asset_url }}"
+        alt="Warm modern living space"
+        loading="lazy"
+      >
+    </div>
+  </div>
+</section>
+
+
+<!-- STORY -->
+<section class="about-story">
+  <div class="container about-story__container">
+
+    <div class="about-story__label">
+      <p>The NESTORA. idea</p>
+
+      <img
+        class="story-image"
+        src="{{ 'atmosphere of home.jpeg' | asset_url }}"
+        alt="Atmosphere of home"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="about-story__content">
+      <h2>
+        We believe the things around you shape how you live.
+      </h2>
+
+      <p>
+        A home does not need more things. It needs the right things.
+      </p>
+
+      <p>
+        That is why we focus on functional, understated pieces that solve
+        everyday problems while adding something to the atmosphere of a
+        space.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- PRINCIPLES -->
+<section class="about-principles">
+  <div class="container">
+
+    <div class="section-heading">
+      <p class="section-heading__eyebrow">
+        What matters to us
+      </p>
+
+      <h2 class="section-heading__title">
+        Simple by design.
+      </h2>
+    </div>
+
+    <div class="about-principles__grid">
+
+      <article class="about-principle">
+        <span class="about-principle__number">
+          01
+        </span>
+
+        <h3>Function first</h3>
+
+        <p>
+          Every piece should have a clear purpose and make everyday life a
+          little easier.
+        </p>
+      </article>
+
+
+      <article class="about-principle">
+        <span class="about-principle__number">
+          02
+        </span>
+
+        <h3>Considered design</h3>
+
+        <p>
+          We prefer timeless forms, calm materials and details that do not
+          compete for attention.
+        </p>
+      </article>
+
+
+      <article class="about-principle">
+        <span class="about-principle__number">
+          03
+        </span>
+
+        <h3>Better living</h3>
+
+        <p>
+          The ultimate goal is not the object itself. It is how your space
+          feels when you live in it.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CLOSING -->
+<section class="about-closing">
+  <div class="container">
+
+    <p class="about-closing__eyebrow">
+      NESTORA.
+    </p>
+
+    <h2>
+      Small changes. Big impact.
+    </h2>
+
+    <a
+      class="button button--primary"
+      href="{{ routes.all_products_collection_url }}"
+    >
+      Explore the collection
+    </a>
+
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "About",
+  "settings": []
+}
+{% endschema %}

@@ -1,137 +1,140 @@
 <section class="collection-hero">
   <div class="container">
+    <div class="collection-hero__content">
 
-    <p class="collection-hero__eyebrow">
-      COLLECTION
-    </p>
+      <p class="collection-hero__eyebrow">
+        {% case collection.handle %}
+          {% when 'lighting' %}
+            Lighting collection
+          {% when 'organization' %}
+            Organization collection
+          {% when 'smart-home' %}
+            Smart home collection
+          {% when 'bathroom' %}
+            Bathroom collection
+          {% when 'kitchen' %}
+            Kitchen collection
+          {% when 'home-decor' %}
+            Home decor collection
+          {% else %}
+            Collection
+        {% endcase %}
+      </p>
 
-    <h1 class="collection-hero__title">
-      {{ collection.title }}
-    </h1>
+      <div class="collection-hero__row">
 
-    <p class="collection-hero__count">
-      {{ collection.products_count }} products
-    </p>
+        <h1 class="collection-hero__title">
+          {% case collection.handle %}
+            {% when 'lighting' %}
+              Designed to glow.
+            {% when 'organization' %}
+              Made for order.
+            {% when 'smart-home' %}
+              Smarter living.
+            {% when 'bathroom' %}
+              Everyday rituals.
+            {% when 'kitchen' %}
+              Better kitchen.
+            {% when 'home-decor' %}
+              Complete the space.
+            {% else %}
+              All collections
+          {% endcase %}
+        </h1>
 
+        <p class="collection-hero__count">
+          {{ collection.products_count }} products
+        </p>
+
+      </div>
+
+    </div>
   </div>
 </section>
 
 
 <section class="collection-products">
-
   <div class="container">
 
-    <div class="products-grid" id="collectionProducts">
+    <div class="products-grid">
 
-      {% paginate collection.products by 20 %}
+      {% for product in collection.products %}
 
-        {% for product in collection.products %}
+        <article class="product-card">
 
-          <article class="product-card">
+          <a
+            class="product-card__link"
+            href="{{ product.url }}"
+          >
 
-            <a
-              href="{{ product.url }}"
-              class="product-card__image-wrapper"
-            >
+            <div class="product-card__image">
 
               {% if product.featured_image %}
-
                 <img
-                  class="product-card__image"
-                  src="{{ product.featured_image | image_url: width: 800 }}"
+                  src="{{ product.featured_image | image_url: width: 1200 }}"
+                  alt="{{ product.title | escape }}"
                   width="{{ product.featured_image.width }}"
                   height="{{ product.featured_image.height }}"
-                  alt="{{ product.featured_image.alt | default: product.title | escape }}"
                   loading="lazy"
                 >
-
               {% endif %}
-
-            </a>
-
-
-            <div class="product-card__content">
-
-              <h2 class="product-card__title">
-
-                <a href="{{ product.url }}">
-                  {{ product.title }}
-                </a>
-
-              </h2>
-
-
-              <p class="product-card__price">
-                {{ product.price | money }}
-              </p>
 
             </div>
 
-          </article>
+            <div class="product-card__info">
 
-        {% else %}
+              <p class="product-card__category">
+                {{ product.type }}
+              </p>
 
-          <p class="collection-products__empty">
-            No products found.
-          </p>
+              <h2 class="product-card__title">
+                {{ product.title }}
+              </h2>
 
-        {% endfor %}
+              <div class="product-card__rating">
+                ★★★★★
+                <span>
+                  ({{ product.metafields.reviews.rating_count.value | default: 0 }})
+                </span>
+              </div>
 
+              <div class="product-card__price">
 
-        {% if paginate.pages > 1 %}
+                <strong>
+                  {{ product.price | money }}
+                </strong>
 
-          <nav
-            class="pagination"
-            aria-label="Pagination"
-          >
+                {% if product.compare_at_price > product.price %}
+                  <del>
+                    {{ product.compare_at_price | money }}
+                  </del>
+                {% endif %}
 
-            {% if paginate.previous %}
+              </div>
 
-              <a
-                class="pagination__link"
-                href="{{ paginate.previous.url }}"
-              >
-                Previous
-              </a>
+            </div>
 
-            {% endif %}
+          </a>
 
+        </article>
 
-            <span class="pagination__current">
-              Page {{ paginate.current_page }} of {{ paginate.pages }}
-            </span>
+      {% else %}
 
+        <p class="products-empty">
+          No products found in this collection.
+        </p>
 
-            {% if paginate.next %}
-
-              <a
-                class="pagination__link"
-                href="{{ paginate.next.url }}"
-              >
-                Next
-              </a>
-
-            {% endif %}
-
-          </nav>
-
-        {% endif %}
-
-      {% endpaginate %}
+      {% endfor %}
 
     </div>
 
   </div>
-
 </section>
 
 
 {% schema %}
 {
   "name": "Collection",
-  "settings": [],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  }
+  "settings": []
 }
 {% endschema %}
